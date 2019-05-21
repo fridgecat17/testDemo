@@ -1,20 +1,19 @@
 <template>
-  <div class="mine">
-    <Header title="Mine"></Header>
-    <h1>mine</h1>
+  <div class="Role">
+    <Header title="Role"></Header>
+    <h1>Role</h1>
   </div>
 </template>
 
 <script>
 import Header from "@/components/header/header";
 export default {
-  name: 'mine',
+  name: "role",
   components: {
     Header
   }
-}
+};
 </script>
 
 <style>
-
 </style>
