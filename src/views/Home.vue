@@ -13,7 +13,9 @@
         <router-link to="hot">HOT</router-link>
       </div>
     </div>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
@@ -24,9 +26,7 @@ import Header from "@/components/header/header";
 export default {
   name: "home",
   data() {
-    return {
-     
-    };
+    return {};
   },
   components: {
     Header
@@ -41,11 +41,10 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   background-color: #eaeaea;
-  padding: 10px 0;
+  padding-bottom: 10px;
 }
 .title {
   font-size: 18px;
   font-weight: 900;
 }
-
 </style>

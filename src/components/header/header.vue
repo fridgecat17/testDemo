@@ -1,7 +1,10 @@
 <template>
-  <header>
-    <h1>{{title}}</h1>
-  </header>
+  <div class="container">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <div class="block"></div>
+  </div>
 </template>
 
 <script>
@@ -20,11 +23,17 @@ export default {
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
 }
-header{
+.block{
+  height: 60px;
+}
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
   color: aliceblue;
   padding: 10px 0;
   background-color: #4c6270;
