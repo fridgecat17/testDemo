@@ -2,7 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './routers/router'
 import store from './store'
-import './plugins/element.js'
+/* import MuseUI from 'muse-ui';
+import 'muse-ui/dist/muse-ui.css'; */
+/* import './plugins/element.js' */
+
+/* Vue.use(MuseUI); */
 
 Vue.config.productionTip = false
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="container-fluid">
     <Header></Header>
-    <div class="container">
+    <div class="tabbar">
       <div class="area title">
         <!-- <router-link to="area">AREA</router-link> -->
         <router-link to="area">AREA</router-link>
@@ -35,16 +35,20 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.tabbar {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background-color: #eaeaea;
-  padding-bottom: 10px;
 }
 .title {
   font-size: 18px;
   font-weight: 900;
+  margin: 10px 0;
+}
+.title .router-link-active {
+  color: #42b983;
+  border-bottom: 1px solid darkblue;
 }
 </style>

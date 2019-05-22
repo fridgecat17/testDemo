@@ -47,7 +47,10 @@ a {
   /* 去除下劃線 */
   text-decoration: none;
 }
-a:hover {
+a.active {
+  color: #42b983;
+}
+.nav.router-link-active{
   color: #42b983;
 }
 </style>

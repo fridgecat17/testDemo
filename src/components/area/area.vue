@@ -2,11 +2,16 @@
   <div class="area">
     <div class="container">
       <div class="areaBlock">
-        <ul class="areaList" v-for="(area,index) in areaList" :key="index">
-          <li>{{area}}</li>
+        <ul class="areaList">
+          <router-link to="/ZYT" tag="li">中央庭</router-link>
         </ul>
       </div>
-      <router-view/>
+      <div class="block">
+
+      </div>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -55,10 +60,15 @@ li {
 li:hover {
   background-color: #fff;
 }
+
 .areaBlock {
   width: 90px;
   position: fixed;
   background: #eaeaea;
   height: 100%;
+  overflow: auto;
+}
+.block{
+  width: 90px;
 }
 </style>
