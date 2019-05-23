@@ -10,8 +10,11 @@ import 'muse-ui/dist/muse-ui.css'; */
 /* Vue.use(MuseUI); */
 
 Vue.prototype.axios = Axios;
-
-Vue.config.productionTip = false
+Vue.filter('setImg',function(value,str){
+  var newUrl = value.replace(/w\.h/,str);
+  return newUrl;
+});
+Vue.config.productionTip = false;
 
 new Vue({
   router,

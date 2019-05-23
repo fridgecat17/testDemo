@@ -70,6 +70,6 @@ li {
   background-color: #fff;
 }
 .block {
-  background-color: #c2bcbc;
+  background-color: #f8f8f8;
 }
 </style>
