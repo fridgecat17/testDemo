@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "ZYT",
+  name: "GWQ",
   data() {
     return {
       dataList: []
@@ -22,7 +22,7 @@ export default {
   },
   methods: {},
   mounted() {
-    this.axios.get("/api/cinemaList?cityId=1").then(res => {
+    this.axios.get("/api/cinemaList?cityId=70").then(res => {
       if (res.data.status === 0) {
         this.dataList = res.data.data;
       }

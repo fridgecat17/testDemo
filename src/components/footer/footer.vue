@@ -7,6 +7,7 @@
         <router-link to="/mine">Mine</router-link>
       </div>
     </div>
+    <div class="box"></div>
   </div>
 </template>
 
@@ -21,18 +22,18 @@ export default {
 <style>
 #footer {
   width: 100%;
-  position: fixed;
-  bottom: 0;
+
+}
+#block {
+  width: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #eaeaea;
   padding: 15px 0;
-}
-#block {
-  font-display: flex;
-  flex-direction: row;
+  position: fixed;
+  bottom: 0;
 }
 #nav {
   align-self: center;
@@ -47,10 +48,7 @@ a {
   /* 去除下劃線 */
   text-decoration: none;
 }
-a.active {
-  color: #42b983;
-}
-.nav.router-link-active{
-  color: #42b983;
+.box{
+  height: 50px;
 }
 </style>

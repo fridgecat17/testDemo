@@ -1,7 +1,9 @@
 <template>
-  <div class="Role">
-    <Header title="Role"></Header>
-    <h1>Role</h1>
+  <div class="container">
+    <div class="Role">
+      <Header title="Role"></Header>
+      <h1>Role</h1>
+    </div>
   </div>
 </template>
 

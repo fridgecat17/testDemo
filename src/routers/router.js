@@ -7,7 +7,7 @@ import RouterHome from './home/home'
 import RouterRole from './role/role'
 import RouterMine from './mine/mine'
 
-import RouterArea from './area/area'
+
 
 Vue.use(Router)
 
@@ -18,7 +18,6 @@ export default new Router({
     RouterHome,
     RouterRole,
     RouterMine,
-    RouterArea,
     {
       path: '/*',
       redirect : '/'

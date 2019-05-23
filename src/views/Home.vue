@@ -1,18 +1,21 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <Header></Header>
-    <div class="tabbar">
-      <div class="area title">
-        <!-- <router-link to="area">AREA</router-link> -->
-        <router-link to="area">AREA</router-link>
-      </div>
-      <div class="new title">
-        <router-link to="new">NEW</router-link>
-      </div>
-      <div class="hot title">
-        <router-link to="hot">HOT</router-link>
+    <div class="tabBar-block">
+      <div class="tabbar">
+        <div class="area title">
+          <!-- <router-link to="area">AREA</router-link> -->
+          <router-link to="/area">AREA</router-link>
+        </div>
+        <div class="new title">
+          <router-link to="/new">NEW</router-link>
+        </div>
+        <div class="hot title">
+          <router-link to="/hot">HOT</router-link>
+        </div>
       </div>
     </div>
+    <div class="box"></div>
     <keep-alive>
       <router-view/>
     </keep-alive>
@@ -35,6 +38,14 @@ export default {
 </script>
 
 <style scoped>
+.box{
+  height: 42px;
+}
+.tabBar-block {
+  position: fixed;
+  top: 62px;
+  width: 100%;
+}
 .tabbar {
   width: 100%;
   display: flex;
@@ -45,7 +56,8 @@ export default {
 .title {
   font-size: 18px;
   font-weight: 900;
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 1px;
 }
 .title .router-link-active {
   color: #42b983;
