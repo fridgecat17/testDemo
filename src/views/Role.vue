@@ -60,6 +60,13 @@ export default {
         });
     }
   },
+  mounted() {
+    this.axios.get("/api/searchList?cityId=10&kw=a").then(res => {
+      if (res.data.status === 0 && res.data.data.movies) {
+        this.movieList = res.data.data.movies.list;
+      }
+    });
+  },
   methods: {
     /* search(e){
       var keywords = e.detail.value;

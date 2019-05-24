@@ -1,20 +1,22 @@
 <template>
   <div class="container">
-    <div class="moviesBox">
-      <div class="movie" v-for="(movie,index) in moviesList" :key="index">
-        <div class="movie-img">
-          <img :src="movie.img | setImg('120.180')" alt srcset>
-        </div>
-        <div class="movie-info">
-          <ul>
-            <li class="title">{{movie.nm}}</li>
-            <li>主演：{{movie.star}}</li>
-            <li>上映日期：{{movie.rt}}</li>
-            <li>{{movie.showInfo}}</li>
-          </ul>
+    <Scroller>
+      <div class="moviesBox">
+        <div class="movie" v-for="(movie,index) in moviesList" :key="index">
+          <div class="movie-img">
+            <img :src="movie.img | setImg('120.180')" alt srcset>
+          </div>
+          <div class="movie-info">
+            <ul>
+              <li class="title">{{movie.nm}}</li>
+              <li>主演：{{movie.star}}</li>
+              <li>上映日期：{{movie.rt}}</li>
+              <li>{{movie.showInfo}}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </Scroller>
   </div>
 </template>
 
@@ -37,15 +39,17 @@ export default {
 </script>
 
 <style scoped>
-.movie {
-  margin: 10px 0;
-  border-bottom: 2px dashed grey;
+.moviesBox {
+  width: 100%;
+  background-color: #eaeaea;
 }
 .movie-info {
   align-self: center;
   padding-left: 10px;
 }
 .movie {
+  margin: 10px 0;
+  border-bottom: 2px dashed grey;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -60,9 +64,9 @@ li {
 }
 .container {
   width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  position: absolute;
   background-color: #eaeaea;
   padding-left: 5px;
 }
