@@ -4,7 +4,7 @@
       <Header title="Role"></Header>
       <div class="search">
         <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
-        <button class="btn">搜索</button>
+        <!-- <button class="btn" @click="search">搜索</button> -->
       </div>
       <div class="movie" v-for="movie in movieList" :key="movie.id">
         <div class="movie-img">
@@ -36,14 +36,46 @@ export default {
   },
   watch: {
     keywords(value) {
-      this.axios.get("/api/searchList?cityId=10&kw=" + value).then(res => {
+      var that = this;
+      // 取消上一次请求
+      this.cancelRequest();
+      this.axios
+        .get("/api/searchList?cityId=10&kw=" + value, {
+          cancelToken: new this.axios.CancelToken(function executor(c) {
+            that.source = c;
+          })
+        })
+        .then(res => {
+          if (res.data.status === 0 && res.data.data.movies) {
+            this.movieList = res.data.data.movies.list;
+          }
+        })
+        .catch(err => {
+          if (this.axios.isCancel(err)) {
+            console.log("Rquest canceled", err.message); //请求如果被取消，这里是返回取消的message
+          } else {
+            //handle error
+            console.log(err);
+          }
+        });
+    }
+  },
+  methods: {
+    /* search(e){
+      var keywords = e.detail.value;
+      console.log(keywords);
+      this.axios.get("/api/searchList?cityId=10&kw=" + keywords).then((res) => {
         if (res.data.status === 0) {
           this.movieList = res.data.data.movies.list;
         }
-      });
+      })
+    } */
+    cancelRequest() {
+      if (typeof this.source === "function") {
+        this.source("终止请求");
+      }
     }
   },
-  methods: {},
   components: {
     Header
   }
@@ -91,6 +123,7 @@ li {
   /* outline: #eaeaea; */
 }
 .search input {
+  width: 80%;
   font-size: 16px;
   height: 30px;
 }

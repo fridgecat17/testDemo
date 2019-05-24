@@ -9,8 +9,10 @@
           <ul>
             <li class="title">{{movie.nm}}</li>
             <li>主演：{{movie.star}}</li>
+            <li v-if="movie.sc!=0">评分：{{movie.sc}}</li>
+            <li v-else>评分：新上映 暂未统计</li>
             <li>最近场次：{{movie.rt}}</li>
-            <li>影院信息：{{movie.showInfo}}</li>
+            <li>{{movie.showInfo}}</li>
           </ul>
         </div>
       </div>
@@ -38,6 +40,7 @@ export default {
 
 <style scoped>
 .movie {
+  width: 100%;
   margin: 10px 0;
   border-bottom: 2px dashed grey;
   display: flex;
@@ -45,18 +48,25 @@ export default {
   justify-content: flex-start;
 }
 .movie-info {
+  width: 100%;
   align-self: center;
   padding-left: 10px;
 }
 li {
+  width: 230px;
   list-style: none;
   margin-bottom: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .container {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #eaeaea;
+  padding-left: 5px;
 }
 .title {
   font-size: 18px;

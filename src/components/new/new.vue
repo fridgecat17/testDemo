@@ -10,7 +10,7 @@
             <li class="title">{{movie.nm}}</li>
             <li>主演：{{movie.star}}</li>
             <li>上映日期：{{movie.rt}}</li>
-            <li>最近场次：{{movie.showInfo}}</li>
+            <li>{{movie.showInfo}}</li>
           </ul>
         </div>
       </div>
@@ -51,14 +51,20 @@ export default {
   justify-content: flex-start;
 }
 li {
+  width: 230px;
   list-style: none;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .container {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #eaeaea;
+  padding-left: 5px;
 }
 .title {
   font-size: 18px;
