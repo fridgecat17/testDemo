@@ -45,6 +45,7 @@ export default {
   position: fixed;
   top: 62px;
   width: 100%;
+  z-index: 100;
 }
 .tabbar {
   width: 100%;
@@ -62,5 +63,9 @@ export default {
 .title .router-link-active {
   color: #42b983;
   border-bottom: 1px solid darkblue;
+}
+.container{
+  width: 100%;
+  height: 100%;
 }
 </style>
