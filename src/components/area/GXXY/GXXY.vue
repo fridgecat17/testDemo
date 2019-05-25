@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Loding v-if="flag"></Loding>
     <div v-for="(data,index) in dataList" :key="index">
       <div v-for="role in data" :key="role.id">
         <ul>
@@ -17,13 +18,15 @@ export default {
   name: "GXXY",
   data() {
     return {
-      dataList: []
+      dataList: [],
+      flag:true,
     };
   },
   methods: {},
   mounted() {
     this.axios.get("/api/cinemaList?cityId=20").then(res => {
       if (res.data.status === 0) {
+        this.flag = false;
         this.dataList = res.data.data;
       }
     });

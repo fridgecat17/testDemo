@@ -1,26 +1,27 @@
 <template>
   <div class="container">
-    <div class="box" ref="box">
+    <div class="box">
       <li>{{pullDownMsg}}</li>
-      <Scroller :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd">
-        <div class="moviesBox">
-          <div class="movie" v-for="movie in movieList" :key="movie.id">
-            <div class="movie-img">
-              <img :src="movie.img | setImg('120.180')">
-            </div>
-            <div class="movie-info">
-              <ul>
+      <Loding v-if="flag"></Loding>
+      <div v-else class="moB">
+        <Scroller :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd">
+          <div class="moviesBox">
+            <div @tap="toDetail(movie.id)" class="movie" v-for="movie in movieList" :key="movie.id">
+              <div class="movie-img">
+                <img :src="movie.img | setImg('128.180')">
+              </div>
+              <div class="movie-info">
                 <li class="title">{{movie.nm}}</li>
                 <li>主演：{{movie.star}}</li>
                 <li v-if="movie.sc!=0">评分：{{movie.sc}}</li>
                 <li v-else>评分：暂未统计</li>
                 <li>最近场次：{{movie.rt}}</li>
                 <li>{{movie.showInfo}}</li>
-              </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </Scroller>
+        </Scroller>
+      </div>
     </div>
   </div>
 </template>
@@ -32,12 +33,14 @@ export default {
   data() {
     return {
       movieList: [],
-      pullDownMsg: ""
+      pullDownMsg: "",
+      flag: true
     };
   },
   mounted() {
     this.axios.get("/api/movieOnInfoList?cityId=10").then(res => {
       if (res.data.status === 0) {
+        this.flag = false;
         this.movieList = res.data.data.movieList;
         //vue 自带的方法：保证数据在赋值完成之后，在页面渲染完成后再去触发这个方法的回调
         /* this.$nextTick(() => {
@@ -70,47 +73,45 @@ export default {
           }
         });
       }
+    },
+    toDetail(movieId) {
+      this.$router.push("/detail/" + movieId);
     }
   }
 };
 </script>
 
 <style scoped>
-.movie {
+.moviesBox {
   width: 100%;
+  background-color: #eaeaea;
+}
+.movie-info {
+  align-self: center;
+  padding-left: 10px;
+}
+.movie {
   margin: 10px 0;
   border-bottom: 2px dashed grey;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-.movie-info {
-  width: 100%;
-  align-self: center;
-  padding-left: 10px;
-}
 li {
-  width: 100%;
+  width: 230px;
   list-style: none;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.box {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-color: #eaeaea;
-  padding-left: 5px;
 }
 .container {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  position: absolute;
   background-color: #eaeaea;
-  justify-content: flex-start;
+  padding-left: 5px;
 }
 .title {
   font-size: 18px;

@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './routers/router'
-import store from './store'
+import store from './store/store'
 import Axios from 'axios';
 
 import Scroller from '@/components/Scroller/Scroller'
+import Loding from '@/components/loding/loding'
 
 /* import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css'; */
@@ -13,6 +14,7 @@ import 'muse-ui/dist/muse-ui.css'; */
 /* Vue.use(MuseUI); */
 
 Vue.component("Scroller",Scroller);
+Vue.component("Loding",Loding);
 
 Vue.prototype.axios = Axios;
 Vue.filter('setImg',function(value,str){

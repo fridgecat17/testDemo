@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <header class="Htitle">
-      <h1>{{title}}</h1>
+    <header>
+      <div class="Htitle">
+        <slot></slot>
+        <h1>{{title}}</h1>
+      </div>
     </header>
-    <div class="block"></div>
   </div>
 </template>
 
@@ -23,17 +25,19 @@ export default {
 </script>
 
 <style scoped>
-.Htitle {
+header {
   width: 100%;
   color: aliceblue;
   padding: 10px 0;
   background-color: #4c6270;
-  text-align: center;
-  position: fixed;
+/*   position: absolute;
   top: 0;
-  z-index: 100;
+  z-index: 10; */
 }
-.block{
-  height: 55px;
+.Htitle{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>

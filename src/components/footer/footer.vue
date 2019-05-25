@@ -7,7 +7,6 @@
         <router-link to="/mine">Mine</router-link>
       </div>
     </div>
-    <div class="box"></div>
   </div>
 </template>
 
@@ -20,10 +19,6 @@ export default {
 </script>
 
 <style>
-#footer {
-  width: 100%;
-
-}
 #block {
   width: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -32,8 +27,8 @@ export default {
   text-align: center;
   background-color: #eaeaea;
   padding: 15px 0;
-  position: fixed;
-  bottom: 0;
+/*   position: absolute;
+  bottom: 0; */
 }
 #nav {
   align-self: center;
@@ -47,8 +42,5 @@ a {
   font-weight: bold;
   /* 去除下劃線 */
   text-decoration: none;
-}
-.box{
-  height: 50px;
 }
 </style>

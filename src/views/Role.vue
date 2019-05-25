@@ -6,7 +6,8 @@
         <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
         <!-- <button class="btn" @click="search">搜索</button> -->
       </div>
-      <div class="movie" v-for="movie in movieList" :key="movie.id">
+      <Loding v-if="flag"></Loding>
+      <div v-else class="movie" v-for="movie in movieList" :key="movie.id">
         <div class="movie-img">
           <img :src="movie.img | setImg('128.180')">
         </div>
@@ -31,7 +32,8 @@ export default {
   data() {
     return {
       keywords: "",
-      movieList: []
+      movieList: [],
+      flag: true
     };
   },
   watch: {
@@ -47,6 +49,7 @@ export default {
         })
         .then(res => {
           if (res.data.status === 0 && res.data.data.movies) {
+            this.flag = false;
             this.movieList = res.data.data.movies.list;
           }
         })
@@ -63,6 +66,7 @@ export default {
   mounted() {
     this.axios.get("/api/searchList?cityId=10&kw=a").then(res => {
       if (res.data.status === 0 && res.data.data.movies) {
+        this.flag = false;
         this.movieList = res.data.data.movies.list;
       }
     });

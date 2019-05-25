@@ -1,7 +1,6 @@
 export default {
   path: '/',
   name: 'home',
-  redirect: 'area',
   component: () => import("@/views/Home"),
   children: [
     {
@@ -44,6 +43,18 @@ export default {
       ]
     },
     {
+      path: 'detail/:movieId',
+      components: {
+        //路由命名components导入写法
+        detail: () => import("@/views/detail") 
+      },
+      //用props传参的方式防止路由参数过于耦合
+      props:{
+        detail: true,
+        
+      }
+    },
+    {
       path: 'hot',
       component: () => import("@/components/hot/hot")
     },
@@ -51,5 +62,9 @@ export default {
       path: 'new',
       component: () => import("@/components/new/new")
     },
+    {
+      path : '/',
+      redirect : '/area'
+    }
   ]
 }

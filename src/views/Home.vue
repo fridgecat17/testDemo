@@ -1,30 +1,38 @@
 <template>
-  <div class="container">
-    <Header></Header>
-    <div class="tabBar-block">
-      <div class="tabbar">
-        <div class="area title">
-          <!-- <router-link to="area">AREA</router-link> -->
-          <router-link to="/area">AREA</router-link>
-        </div>
-        <div class="new title">
-          <router-link to="/new">NEW</router-link>
-        </div>
-        <div class="hot title">
-          <router-link to="/hot">HOT</router-link>
+  <div class="box">
+    <div class="home">
+      <div>
+        <Header></Header>
+      </div>
+      <div class="tabBar-block">
+        <div class="tabbar">
+          <div class="area title">
+            <!-- <router-link to="area">AREA</router-link> -->
+            <router-link to="/area">AREA</router-link>
+          </div>
+          <div class="new title">
+            <router-link to="/new">NEW</router-link>
+          </div>
+          <div class="hot title">
+            <router-link to="/hot">HOT</router-link>
+          </div>
         </div>
       </div>
+      <div class="container">
+        <keep-alive>
+          <router-view/>
+        </keep-alive>
+        
+      </div>
+      <router-view name="detail"/>
+      <Footer></Footer>
     </div>
-    <div class="box"></div>
-    <keep-alive>
-      <router-view/>
-    </keep-alive>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 export default {
   name: "home",
@@ -32,18 +40,25 @@ export default {
     return {};
   },
   components: {
-    Header
+    Header,
+    Footer
   }
 };
 </script>
 
 <style scoped>
-.box{
-  height: 42px;
+.box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .tabBar-block {
-  position: fixed;
-  top: 62px;
   width: 100%;
   z-index: 100;
 }
@@ -64,8 +79,7 @@ export default {
   color: #42b983;
   border-bottom: 1px solid darkblue;
 }
-.container{
-  width: 100%;
-  height: 100%;
+.container {
+  overflow: scroll;
 }
 </style>

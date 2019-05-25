@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="area">
     <div class="areaBlock">
       <ul class="areaList">
         <router-link to="/area/ZYT" tag="li">中央庭</router-link>
@@ -12,7 +12,6 @@
         <router-link to="/area/GWQ" tag="li">港湾区</router-link>
       </ul>
     </div>
-    <div class="box"></div>
     <div class="block">
       <keep-alive>
         <router-view/>
@@ -32,18 +31,9 @@ export default {
 </script>
 
 <style scoped>
-.box{
-  height: 38px;
-}
-.areaBlock {
-  left: 0;
-  right: 0;
-  position: fixed;
-  top: 99px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-.container {
+.area{
+  width:100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -60,16 +50,17 @@ li {
   white-space: nowrap;
 }
 .areaList {
+  width:100%;
   display: flex;
   flex-direction: row;
   background: #eaeaea;
-  height: 100%;
-  overflow: auto;
+  overflow: scroll;
 }
 .areaList .router-link-active {
   background-color: #fff;
 }
 .block {
   background-color: #f8f8f8;
+  overflow: scroll;
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <Scroller>
+    <Loding v-if="flag"></Loding>
+    <Scroller v-else>
       <div class="moviesBox">
         <div class="movie" v-for="(movie,index) in moviesList" :key="index">
           <div class="movie-img">
-            <img :src="movie.img | setImg('120.180')" alt srcset>
+            <img :src="movie.img | setImg('128.180')">
           </div>
           <div class="movie-info">
             <ul>
@@ -25,12 +26,14 @@ export default {
   name: "new",
   data() {
     return {
-      moviesList: []
+      moviesList: [],
+      flag: true
     };
   },
   mounted() {
     this.axios.get("/api/movieComingList?cityId=10").then(res => {
       if (res.data.status === 0) {
+        this.flag = false;
         this.moviesList = res.data.data.comingList;
       }
     });
