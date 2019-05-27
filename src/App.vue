@@ -25,4 +25,7 @@ export default {
   width: 100%;
   position: absolute;
 }
+li {
+  list-style: none;
+}
 </style>

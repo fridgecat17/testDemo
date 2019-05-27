@@ -1,14 +1,14 @@
 <template>
   <div class="container">
+    <Header title="Role"></Header>
     <div class="Role">
-      <Header title="Role"></Header>
-      <div class="box">
-        <div class="search">
-          <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
-          <!-- <button class="btn" @click="search">搜索</button> -->
-        </div>
-        <Loding v-if="flag"></Loding>
-        <div v-else class="movie" v-for="movie in movieList" :key="movie.id">
+      <div class="search">
+        <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
+        <!-- <button class="btn" @click="search">搜索</button> -->
+      </div>
+      <Loding v-if="flag"></Loding>
+      <div v-else class="box">
+        <div class="movie" v-for="movie in movieList" :key="movie.id">
           <div class="movie-img">
             <img :src="movie.img | setImg('128.180')">
           </div>
@@ -21,8 +21,8 @@
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -97,17 +97,20 @@ export default {
 </script>
 
 <style scoped>
-.box{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: scroll;
-}
 .container {
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: #eaeaea;
+}
+.role {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+}
+.box {
+  overflow: scroll;
 }
 .movie {
   margin: 10px 0;
@@ -115,13 +118,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  overflow: scroll;
 }
-.role {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+
 .movie-info {
   align-self: center;
   padding-left: 10px;
@@ -135,6 +133,7 @@ li {
   font-weight: bold;
 }
 .search {
+  padding-top: 5px;
   margin: 10px 0;
   display: flex;
   flex-direction: row;

@@ -22,7 +22,6 @@
         <keep-alive>
           <router-view/>
         </keep-alive>
-        
       </div>
       <router-view name="detail"/>
       <Footer></Footer>

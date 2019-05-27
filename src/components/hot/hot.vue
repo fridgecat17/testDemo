@@ -1,27 +1,25 @@
 <template>
   <div class="container">
     <div class="box">
-      <li>{{pullDownMsg}}</li>
+      <span>{{pullDownMsg}}</span>
       <Loding v-if="flag"></Loding>
-      <div v-else class="moB">
-        <Scroller :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd">
-          <div class="moviesBox">
-            <div @tap="toDetail(movie.id)" class="movie" v-for="movie in movieList" :key="movie.id">
-              <div class="movie-img">
-                <img :src="movie.img | setImg('128.180')">
-              </div>
-              <div class="movie-info">
-                <li class="title">{{movie.nm}}</li>
-                <li>主演：{{movie.star}}</li>
-                <li v-if="movie.sc!=0">评分：{{movie.sc}}</li>
-                <li v-else>评分：暂未统计</li>
-                <li>最近场次：{{movie.rt}}</li>
-                <li>{{movie.showInfo}}</li>
-              </div>
+      <Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd">
+        <div class="moviesBox">
+          <div @tap="toDetail(movie.id)" class="movie" v-for="movie in movieList" :key="movie.id">
+            <div class="movie-img">
+              <img :src="movie.img | setImg('128.180')">
+            </div>
+            <div class="movie-info">
+              <li class="title">{{movie.nm}}</li>
+              <li>主演：{{movie.star}}</li>
+              <li v-if="movie.sc!=0">评分：{{movie.sc}}</li>
+              <li v-else>评分：暂未统计</li>
+              <li>最近场次：{{movie.rt}}</li>
+              <li>{{movie.showInfo}}</li>
             </div>
           </div>
-        </Scroller>
-      </div>
+        </div>
+      </Scroller>
     </div>
   </div>
 </template>
@@ -85,7 +83,7 @@ export default {
 .moviesBox {
   width: 100%;
   background-color: #eaeaea;
-  flex:1;
+  flex: 1;
   position: relative;
 }
 .movie-info {
@@ -114,6 +112,9 @@ li {
   position: absolute;
   background-color: #eaeaea;
   padding-left: 5px;
+}
+.box {
+  width: 100%;
 }
 .title {
   font-size: 18px;
