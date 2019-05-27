@@ -85,6 +85,8 @@ export default {
 .moviesBox {
   width: 100%;
   background-color: #eaeaea;
+  flex:1;
+  position: relative;
 }
 .movie-info {
   align-self: center;

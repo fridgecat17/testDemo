@@ -3,7 +3,7 @@
     <Loding v-if="flag"></Loding>
     <Scroller v-else>
       <div class="moviesBox">
-        <div class="movie" v-for="(movie,index) in moviesList" :key="index">
+        <div  @tap="toDetail(movie.id)" class="movie" v-for="(movie,index) in moviesList" :key="index">
           <div class="movie-img">
             <img :src="movie.img | setImg('128.180')">
           </div>
@@ -37,6 +37,11 @@ export default {
         this.moviesList = res.data.data.comingList;
       }
     });
+  },
+  methods:{
+    toDetail(movieId) {
+      this.$router.push("/detail/" + movieId);
+    }
   }
 };
 </script>

@@ -7,6 +7,7 @@
         <router-link to="/mine">Mine</router-link>
       </div>
     </div>
+    <div style="height:50px;"></div>
   </div>
 </template>
 
@@ -21,6 +22,10 @@ export default {
 <style>
 #block {
   width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

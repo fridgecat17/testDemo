@@ -2,31 +2,33 @@
   <div class="container">
     <div class="Role">
       <Header title="Role"></Header>
-      <div class="search">
-        <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
-        <!-- <button class="btn" @click="search">搜索</button> -->
-      </div>
-      <Loding v-if="flag"></Loding>
-      <div v-else class="movie" v-for="movie in movieList" :key="movie.id">
-        <div class="movie-img">
-          <img :src="movie.img | setImg('128.180')">
+      <div class="box">
+        <div class="search">
+          <input type="text" placeholder="请输入需要搜索的电影" v-model="keywords">
+          <!-- <button class="btn" @click="search">搜索</button> -->
         </div>
-        <div class="movie-info">
-          <ul>
+        <Loding v-if="flag"></Loding>
+        <div v-else class="movie" v-for="movie in movieList" :key="movie.id">
+          <div class="movie-img">
+            <img :src="movie.img | setImg('128.180')">
+          </div>
+          <div class="movie-info">
             <li class="title">{{movie.nm}}</li>
             <li>导演：{{movie.dir}}</li>
             <li>主演：{{movie.star}}</li>
             <li>类型：{{movie.cat}}</li>
             <li>上映时间：{{movie.rt}}</li>
-          </ul>
+          </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 export default {
   name: "role",
   data() {
@@ -88,17 +90,36 @@ export default {
     }
   },
   components: {
-    Header
+    Header,
+    Footer
   }
 };
 </script>
 
 <style scoped>
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: scroll;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #eaeaea;
+}
 .movie {
   margin: 10px 0;
   border-bottom: 2px dashed grey;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  overflow: scroll;
+}
+.role {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
 }
 .movie-info {
@@ -113,14 +134,8 @@ li {
   font-size: 18px;
   font-weight: bold;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #eaeaea;
-}
 .search {
-  margin: 15px 0 10px 0;
+  margin: 10px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -137,9 +152,6 @@ li {
   width: 80%;
   font-size: 16px;
   height: 30px;
-}
-li {
-  list-style: none;
 }
 span {
   font-size: 18px;

@@ -3,16 +3,31 @@
     <Header title="Detail">
       <i @touchstart="toBack">《</i>
     </Header>
-    <div class="movieDetail" :style="bgc">
+    <Loding v-if="flag"></Loding>
+    <div v-else class="movieDetail">
+      <li class="title">
+        <img :src="detailMovie.img | setImg('300.620')">
+      </li>
       <h3 class="title">{{detailMovie.nm}}</h3>
       <h4 class="title">{{detailMovie.enm}}</h4>
       <li>
-        <img :src="detailMovie.albumImg" />
+        <b>类型：{{detailMovie.cat}}</b>
       </li>
-      <li>{{detailMovie.cat}}</li>
-      <li>{{detailMovie.dir}}</li>
-      <li>{{detailMovie.dir}}</li>
-      <li>{{detailMovie.dra}}</li>
+      <li>
+        <b>导演：{{detailMovie.dir}}</b>
+      </li>
+      <li>
+        <b>演员：{{detailMovie.star}}</b>
+      </li>
+      <li>剧情简介：{{detailMovie.dra}}</li>
+      <li>
+        <b>剧照展示：</b>
+        <div class="photoList">
+          <li v-for="(photoUrl,i) in detailMovie.photos" :key="i">
+            <img :src="photoUrl | setImg('328.136')">
+          </li>
+        </div>
+      </li>
     </div>
   </div>
 </template>
@@ -24,9 +39,7 @@ export default {
   data() {
     return {
       detailMovie: {},
-      bgc: {
-        backgroundColor: "#fff"
-      }
+      flag: true
     };
   },
   components: {
@@ -44,6 +57,7 @@ export default {
       .get("/api/detailmovie?movieId=" + this.movieId)
       .then(res => {
         if (res.data.status === 0) {
+          this.flag = false;
           this.detailMovie = res.data.data.detailMovie;
           this.bgc = res.data.data.detailMovie.backgroundColor;
         }
@@ -61,8 +75,22 @@ export default {
   left: 0;
   z-index: 200;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: #fff;
+}
+.photoList {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: scroll;
+  margin-top: 10px;
+}
+.photoList img{
+  height: 136px;
+  width:auto;
+}
+.photoList li{
+  padding: 0 20px 0 0;
 }
 i {
   font-style: normal;
@@ -72,15 +100,19 @@ i {
   left: 15px;
   top: 20px;
 }
-.movieDetail{
+.movieDetail {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #eaeaea;
+  padding: 10px 20px;
+  overflow: scroll;
 }
-.title{
+.title {
   align-self: center;
 }
-li{
-  list-style:none;
+li {
+  list-style: none;
+  padding: 5px 20px;
 }
 </style>
