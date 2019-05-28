@@ -5,11 +5,14 @@
     </Header>
     <Loding v-if="flag"></Loding>
     <div v-else class="movieDetail">
-      <li class="title">
-        <img :src="detailMovie.img | setImg('300.620')">
-      </li>
-      <h3 class="title">{{detailMovie.nm}}</h3>
-      <h4 class="title">{{detailMovie.enm}}</h4>
+      <div :style="background"></div>
+        <li class="title">
+          <img :src="detailMovie.img | setImg('300.620')">
+        </li>
+        <h3 class="title">{{detailMovie.nm}}</h3>
+        <h4 class="title">{{detailMovie.enm}}</h4>
+      
+
       <li>
         <b>类型：{{detailMovie.cat}}</b>
       </li>
@@ -39,7 +42,15 @@ export default {
   data() {
     return {
       detailMovie: {},
-      flag: true
+      flag: true,
+      background: {
+        /* 设置高斯模糊 */
+        filter: "blur(20px)",
+        background: "",
+        width:'90%',
+        position:'absolute',
+        height:460+'px',
+      }
     };
   },
   components: {
@@ -59,7 +70,10 @@ export default {
         if (res.data.status === 0) {
           this.flag = false;
           this.detailMovie = res.data.data.detailMovie;
-          this.bgc = res.data.data.detailMovie.backgroundColor;
+          this.background.background =
+            "url(" +
+            res.data.data.detailMovie.img.replace(/w\.h/, "600.750") +
+            ")";
         }
       })
       .catch(err => {
@@ -70,6 +84,9 @@ export default {
 </script>
 
 <style scoped>
+Header{
+  position: relative;
+}
 .detailContainer {
   position: absolute;
   left: 0;
@@ -85,11 +102,11 @@ export default {
   overflow: scroll;
   margin-top: 10px;
 }
-.photoList img{
+.photoList img {
   height: 136px;
-  width:auto;
+  width: auto;
 }
-.photoList li{
+.photoList li {
   padding: 0 20px 0 0;
 }
 i {
@@ -110,6 +127,7 @@ i {
 }
 .title {
   align-self: center;
+  z-index: 1;
 }
 li {
   list-style: none;

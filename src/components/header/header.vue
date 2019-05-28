@@ -25,7 +25,7 @@ export default {
 <style scoped>
 header {
   height: 60px;
-  z-index: 10;
+  z-index: 100;
 }
 .Htitle {
   position: fixed;

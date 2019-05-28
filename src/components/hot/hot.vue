@@ -87,10 +87,13 @@ export default {
   position: relative;
 }
 .movie-info {
-  align-self: center;
+  align-self: flex-start;
   padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .movie {
+  width: 100%;
   margin: 10px 0;
   border-bottom: 2px dashed grey;
   display: flex;
@@ -98,7 +101,7 @@ export default {
   justify-content: flex-start;
 }
 li {
-  width: 230px;
+  width: 100%;
   list-style: none;
   margin-bottom: 20px;
   white-space: nowrap;
