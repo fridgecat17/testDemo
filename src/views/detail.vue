@@ -11,8 +11,6 @@
         </li>
         <h3 class="title">{{detailMovie.nm}}</h3>
         <h4 class="title">{{detailMovie.enm}}</h4>
-      
-
       <li>
         <b>类型：{{detailMovie.cat}}</b>
       </li>
