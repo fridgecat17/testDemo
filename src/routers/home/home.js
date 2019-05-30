@@ -46,13 +46,19 @@ export default {
       path: 'detail/:movieId',
       components: {
         //路由命名components导入写法
-        detail: () => import("@/views/detail") 
+        detail: () => import("@/views/detail")
       },
       //用props传参的方式防止路由参数过于耦合
-      props:{
+      props: {
         detail: true,
-        
+
       },
+    },
+    {
+      path: 'register',
+      components: {
+        register: () => import("@/views/Register")
+      }
     },
     {
       path: 'hot',
@@ -63,8 +69,8 @@ export default {
       component: () => import("@/components/new/new")
     },
     {
-      path : '/',
-      redirect : '/area'
+      path: '/',
+      redirect: '/area'
     }
   ]
 }

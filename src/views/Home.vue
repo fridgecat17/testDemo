@@ -24,6 +24,7 @@
         </keep-alive>
       </div>
       <router-view name="detail"/>
+      <router-view name="register"/>
       <Footer></Footer>
     </div>
   </div>

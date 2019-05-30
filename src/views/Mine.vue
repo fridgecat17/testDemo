@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <router-view></router-view>
     <Header title="MINE"></Header>
     <div class="login" v-if="loginFlag">
       <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558968158176&di=721909be802a7c65c20dd2a90cf44467&imgtype=0&src=http%3A%2F%2Fpic215.nipic.com%2Ffile%2F20190512%2F9355665_205619936088_2.jpg" alt="">
@@ -36,7 +35,7 @@ export default {
   },
   methods: {
     toRegister(){
-      this.$router.push('/Mine/register');
+      this.$router.push('/register');
     }
   },
 };
